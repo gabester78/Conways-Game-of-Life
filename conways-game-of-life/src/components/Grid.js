@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from "react";
+import React, { useState, useCallback, useRef, useEffect } from "react";
 import produce from "immer";
 
 const rowsNum = 25;
@@ -72,6 +72,15 @@ const Grid = () => {
     setSpeed(speed - 250);
   };
 
+  useEffect(() => {
+    if (running) {
+      const id = window.setInterval(() => {
+        setCounter((counter) => counter + 1);
+      }, speed);
+      return () => window.clearInterval(id);
+    }
+  }, [running, speed]);
+
   return (
     <div>
       <div className="btnbar">
@@ -89,6 +98,7 @@ const Grid = () => {
         <button
           onClick={() => {
             setGrid(clearGrid());
+            setCounter(0);
           }}
         >
           Clear Grid
@@ -113,6 +123,76 @@ const Grid = () => {
           Slower Automaton
         </button>
       </div>
+      <div className="presetTitle">
+        <h4>Preset Configurations</h4>
+      </div>
+
+      <div className="btnbar">
+        <button
+          onClick={() => {
+            const newGrid = produce(grid, (gridCopy) => {
+              for (let i = 5; i < 20; i++) {
+                gridCopy[12][i] = 1;
+              }
+            });
+            setGrid(newGrid);
+          }}
+        >
+          Row
+        </button>
+        <button
+          onClick={() => {
+            const newGrid = produce(grid, (gridCopy) => {
+              for (let i = 5; i < 20; i++) {
+                gridCopy[i][12] = 1;
+              }
+            });
+            setGrid(newGrid);
+          }}
+        >
+          Column
+        </button>
+        <button
+          onClick={() => {
+            const newGrid = produce(grid, (gridCopy) => {
+              for (let i = 12; i < 14; i++) {
+                gridCopy[i][12] = 1;
+                gridCopy[i][13] = 1;
+              }
+            });
+            setGrid(newGrid);
+          }}
+        >
+          Block
+        </button>
+        <button
+          onClick={() => {
+            const newGrid = produce(grid, (gridCopy) => {
+              for (let i = 11; i < 14; i++) {
+                gridCopy[12][i] = 1;
+              }
+            });
+            setGrid(newGrid);
+          }}
+        >
+          Blinker
+        </button>
+        <button
+          onClick={() => {
+            const newGrid = produce(grid, (gridCopy) => {
+              for (let i = 11; i < 14; i++) {
+                gridCopy[12][i] = 1;
+              }
+              for (let i = 12; i < 15; i++) {
+                gridCopy[11][i] = 1;
+              }
+            });
+            setGrid(newGrid);
+          }}
+        >
+          Toad
+        </button>
+      </div>
       <div className="grid">
         {grid.map((rows, i) =>
           rows.map((col, k) => (
@@ -135,6 +215,7 @@ const Grid = () => {
             />
           ))
         )}
+        <h4>Generations:{counter}</h4>
       </div>
     </div>
   );

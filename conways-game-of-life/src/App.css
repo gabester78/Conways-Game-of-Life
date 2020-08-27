@@ -22,6 +22,8 @@ h3 {
 }
 
 .intro {
+  /* display: flex;
+  flex-direction: row; */
   color: #e8eddf;
   background-color: #333533;
   padding: 10px 30px;
@@ -33,10 +35,6 @@ h3 {
 .intro h1 {
   font-size: 45px;
   text-shadow: 0 0 5px #000000;
-}
-
-.about {
-  padding: 10px 30px 15px 30px;
 }
 
 .grid {
@@ -77,4 +75,12 @@ button:hover {
   margin-top: 40px;
   margin-bottom: -10px;
   text-align: center;
+}
+
+.rules {
+  padding: 10px 30px 15px 30px;
+}
+
+.about {
+  padding: 10px 0px;
 }

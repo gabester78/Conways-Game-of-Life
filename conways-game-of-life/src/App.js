@@ -1,14 +1,16 @@
 import React from "react";
 import "./App.css";
+// import { Route, Switch } from "react-router-dom";
 import Intro from "./components/Intro";
-import About from "./components/About";
+// import About from "./components/About";
 import Grid from "./components/Grid";
+import Rules from "./components/Rules";
 
 function App() {
   return (
     <div className="App">
       <Intro />
-      <About />
+      <Rules />
       <Grid />
     </div>
   );

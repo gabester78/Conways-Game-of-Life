@@ -3,8 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div className="about">
-      <h3>How the game works</h3>
-
+      <h3>About the game</h3>
       <p>
         The Game of Life is not your typical computer game. It is a 'cellular
         automaton', and was invented by Cambridge mathematician John Conway.

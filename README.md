@@ -2,13 +2,6 @@
 
 ---
 
-**NOTE: This is not a data science project.** If you're in the data
-science track and want to do a DS-specific project, jump to the [Data
-Science Build Week
-Repo](https://github.com/LambdaSchool/CS-Data-Science-Build-Week-1).
-
----
-
 Welcome to John Conway's "Game of Life"! This is a computer science
 classic from 1970, a program that simulates a _cellular automaton_
 (plural _automata_). It has connections to all kinds of different
